@@ -161,8 +161,8 @@ GROUP BY category;
 WITH hourly_sale AS (
     SELECT *,
         CASE
-            WHEN EXTRACT(HOUR FROM sale_time) < 12 THEN 'Morning'
-            WHEN EXTRACT(HOUR FROM sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
+            WHEN HOUR(sale_time) < 12 THEN 'Morning'
+            WHEN HOUR(sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
             ELSE 'Evening'
         END AS shift
     FROM retail_sales
