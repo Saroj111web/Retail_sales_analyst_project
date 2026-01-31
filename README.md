@@ -201,8 +201,8 @@ GROUP BY category;
 WITH hourly_sale AS (
     SELECT *,
         CASE
-            WHEN EXTRACT(HOUR FROM sale_time) < 12 THEN 'Morning'
-            WHEN EXTRACT(HOUR FROM sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
+            WHEN HOUR(sale_time) < 12 THEN 'Morning'
+            WHEN HOUR(sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
             ELSE 'Evening'
         END AS shift
     FROM retail_sales
@@ -230,6 +230,7 @@ GROUP BY shift;
 ## Conclusion
 
 This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
+
 
 
 
